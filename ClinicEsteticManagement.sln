@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8DE0A02C-9355-4011-8491-22387D58A4DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F7A851F7-07F2-4A4C-86C3-74BDF854CF26}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{F8EA27BB-AA37-4E13-85E1-AA634EC51283}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{98717D86-F413-4EB0-AFB2-8785E75FD68D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{043D75A4-B563-4923-88DB-680C605889FA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicEsteticManagement.Domain", "ClinicEsteticManagement.Domain\ClinicEsteticManagement.Domain.csproj", "{062924F2-C0C6-41CC-AC78-B25F6BE5D09A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicEsteticManagement.Application", "ClinicEsteticManagement.Application\ClinicEsteticManagement.Application.csproj", "{81CC3E42-F9D7-4E25-85B6-618A3F73391C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicEsteticManagement.Persistence", "ClinicEsteticManagement.Persistence\ClinicEsteticManagement.Persistence.csproj", "{9D67211E-8DAC-4981-B246-854741FEC961}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicEsteticManagement.API", "ClinicEsteticManagement.API\ClinicEsteticManagement.API.csproj", "{5727F152-2F33-44E9-B508-93AC4B561C49}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{062924F2-C0C6-41CC-AC78-B25F6BE5D09A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{062924F2-C0C6-41CC-AC78-B25F6BE5D09A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{062924F2-C0C6-41CC-AC78-B25F6BE5D09A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{062924F2-C0C6-41CC-AC78-B25F6BE5D09A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81CC3E42-F9D7-4E25-85B6-618A3F73391C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81CC3E42-F9D7-4E25-85B6-618A3F73391C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81CC3E42-F9D7-4E25-85B6-618A3F73391C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81CC3E42-F9D7-4E25-85B6-618A3F73391C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D67211E-8DAC-4981-B246-854741FEC961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D67211E-8DAC-4981-B246-854741FEC961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D67211E-8DAC-4981-B246-854741FEC961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D67211E-8DAC-4981-B246-854741FEC961}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5727F152-2F33-44E9-B508-93AC4B561C49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5727F152-2F33-44E9-B508-93AC4B561C49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5727F152-2F33-44E9-B508-93AC4B561C49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5727F152-2F33-44E9-B508-93AC4B561C49}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F8EA27BB-AA37-4E13-85E1-AA634EC51283} = {8DE0A02C-9355-4011-8491-22387D58A4DD}
+		{98717D86-F413-4EB0-AFB2-8785E75FD68D} = {8DE0A02C-9355-4011-8491-22387D58A4DD}
+		{043D75A4-B563-4923-88DB-680C605889FA} = {8DE0A02C-9355-4011-8491-22387D58A4DD}
+		{062924F2-C0C6-41CC-AC78-B25F6BE5D09A} = {98717D86-F413-4EB0-AFB2-8785E75FD68D}
+		{81CC3E42-F9D7-4E25-85B6-618A3F73391C} = {98717D86-F413-4EB0-AFB2-8785E75FD68D}
+		{9D67211E-8DAC-4981-B246-854741FEC961} = {043D75A4-B563-4923-88DB-680C605889FA}
+		{5727F152-2F33-44E9-B508-93AC4B561C49} = {F8EA27BB-AA37-4E13-85E1-AA634EC51283}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {970B6C9B-8304-462A-B3DF-404589DD4FE5}
+	EndGlobalSection
+EndGlobal
