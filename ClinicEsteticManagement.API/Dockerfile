@@ -5,6 +5,11 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
+
+RUN dotnet tool install --global dotnet-ef --version 6.*
+RUN dotnet tool update --global dotnet-ef
+RUN export PATH="$PATH:$HOME/.dotnet/tools/"
+
 COPY ["ClinicEsteticManagement.API/ClinicEsteticManagement.API.csproj", "ClinicEsteticManagement.API/"]
 COPY ["ClinicEsteticManagement.Application/ClinicEsteticManagement.Application.csproj", "ClinicEsteticManagement.Application/"]
 COPY ["ClinicEsteticManagement.Domain/ClinicEsteticManagement.Domain.csproj", "ClinicEsteticManagement.Domain/"]
@@ -13,8 +18,6 @@ RUN dotnet restore "ClinicEsteticManagement.API/ClinicEsteticManagement.API.cspr
 COPY . .
 WORKDIR "/src/ClinicEsteticManagement.API"
 RUN dotnet build "ClinicEsteticManagement.API.csproj" -c Release -o /app/build
-RUN dotnet tool update --global dotnet-ef
-RUN export PATH="$PATH:$HOME/.dotnet/tools/"
 RUN dotnet-ef database update
 
 FROM build AS publish
