@@ -15,7 +15,7 @@ WORKDIR "/src/ClinicEsteticManagement.API"
 RUN dotnet build "ClinicEsteticManagement.API.csproj" -c Release -o /app/build
 RUN dotnet tool update --global dotnet-ef
 RUN export PATH="$PATH:$HOME/.dotnet/tools/"
-RUN dotnet ef database update
+RUN dotnet-ef database update
 
 FROM build AS publish
 RUN dotnet publish "ClinicEsteticManagement.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
