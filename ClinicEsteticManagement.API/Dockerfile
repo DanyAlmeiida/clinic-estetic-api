@@ -13,6 +13,7 @@ RUN dotnet restore "ClinicEsteticManagement.API/ClinicEsteticManagement.API.cspr
 COPY . .
 WORKDIR "/src/ClinicEsteticManagement.API"
 RUN dotnet build "ClinicEsteticManagement.API.csproj" -c Release -o /app/build
+RUN dotnet tool update --global dotnet-ef
 RUN dotnet ef database update
 
 FROM build AS publish
