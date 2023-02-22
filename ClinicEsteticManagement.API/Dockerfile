@@ -7,7 +7,6 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 
 RUN dotnet tool install --global dotnet-ef --version 6.*
-RUN dotnet tool update --global dotnet-ef
 RUN export PATH="$PATH:$HOME/.dotnet/tools/"
 
 COPY ["ClinicEsteticManagement.API/ClinicEsteticManagement.API.csproj", "ClinicEsteticManagement.API/"]
