@@ -20,7 +20,7 @@ pipeline {
                 echo 'Deploying....'
                 sh ''' 
                     echo "checking for container react-ce-netcoreapi installation and status"
-                    if [ $( sudo docker ps -a | grep react-ce | wc -l ) -gt 0 ] 
+                    if [ $( sudo docker ps -a | grep react-ce-netcoreapi | wc -l ) -gt 0 ] 
                     then   
                         sudo docker stop react-ce-netcoreapi
                         sudo docker rm react-ce-netcoreapi
