@@ -25,4 +25,5 @@ RUN dotnet publish "ClinicEsteticManagement.API.csproj" -c Release -o /app/publi
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+ENV ASPNETCORE_URLS http://*:8200
 ENTRYPOINT ["dotnet", "ClinicEsteticManagement.API.dll"]
