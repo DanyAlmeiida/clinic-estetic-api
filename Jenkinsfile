@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             steps {
                 configFileProvider([configFile(fileId: "c987fbf3-b8a4-4129-a890-20618307b2c7", targetLocation: 'appsettings.json', variable: 'ENV_CONFIG')]) {
-                    load "appsettings.json";
+                    load "env.groovy";
                 }
                 echo 'Building...'
                 sh 'dotnet build'
