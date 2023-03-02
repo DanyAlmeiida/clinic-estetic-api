@@ -6,7 +6,7 @@ pipeline {
      stages {
         stage('Build') {
             steps {
-                configFileProvider([configFile(fileId: "c987fbf3-b8a4-4129-a890-20618307b2c7", targetLocation: 'appsettings.json', variable: 'ENV_CONFIG')]) {
+                configFileProvider([configFile(fileId: "b2d93d76-2cfa-4158-a9c7-b1a8c40e2a58", targetLocation: 'appsettings.json', variable: 'ENV_CONFIG')]) {
                   
                 }
                 echo 'Building...'
