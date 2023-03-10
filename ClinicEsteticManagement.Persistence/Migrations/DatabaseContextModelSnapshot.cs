@@ -37,9 +37,6 @@ namespace ClinicEsteticManagement.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClientId"));
 
-                    b.Property<Guid?>("ClinicalInformationId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
@@ -62,8 +59,6 @@ namespace ClinicEsteticManagement.Persistence.Migrations
 
                     b.HasAlternateKey("ClientId");
 
-                    b.HasIndex("ClinicalInformationId");
-
                     b.ToTable("Clients");
                 });
 
@@ -80,6 +75,9 @@ namespace ClinicEsteticManagement.Persistence.Migrations
                     b.Property<string>("Alergies")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("ClientId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ClinicalBackground")
                         .IsRequired()
@@ -135,9 +133,89 @@ namespace ClinicEsteticManagement.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClientId");
+
                     b.HasIndex("GynecologicalConditionsId");
 
                     b.ToTable("ClinicalInformations");
+                });
+
+            modelBuilder.Entity("ClinicEsteticManagement.Domain.ClinicalData.GeneralDiseases", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CancerBackground")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CholesterolDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("CholesterolValue")
+                        .HasColumnType("float");
+
+                    b.Property<Guid?>("ClientId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DiabetesDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DiabetesType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FoodIntolerance")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("HasChilblains")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HasEpilepsy")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HasHemophiliac")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HasHyperthyroidism")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HasHypotension")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HasSkinProblems")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HasVascularProblems")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Intestine")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("StressDegree")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("TriglyceridesDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("TriglyceridesValue")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.ToTable("GeneralDiseases");
                 });
 
             modelBuilder.Entity("ClinicEsteticManagement.Domain.ClinicalData.GynecologicalConditions", b =>
@@ -198,22 +276,26 @@ namespace ClinicEsteticManagement.Persistence.Migrations
                     b.ToTable("PregnancyTypes");
                 });
 
-            modelBuilder.Entity("ClinicEsteticManagement.Domain.Client", b =>
-                {
-                    b.HasOne("ClinicEsteticManagement.Domain.ClinicalData.ClinicalInformation", "ClinicalInformation")
-                        .WithMany()
-                        .HasForeignKey("ClinicalInformationId");
-
-                    b.Navigation("ClinicalInformation");
-                });
-
             modelBuilder.Entity("ClinicEsteticManagement.Domain.ClinicalData.ClinicalInformation", b =>
                 {
+                    b.HasOne("ClinicEsteticManagement.Domain.Client", null)
+                        .WithMany("ClinicalInformations")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ClinicEsteticManagement.Domain.ClinicalData.GynecologicalConditions", "GynecologicalConditions")
                         .WithMany()
                         .HasForeignKey("GynecologicalConditionsId");
 
                     b.Navigation("GynecologicalConditions");
+                });
+
+            modelBuilder.Entity("ClinicEsteticManagement.Domain.ClinicalData.GeneralDiseases", b =>
+                {
+                    b.HasOne("ClinicEsteticManagement.Domain.Client", null)
+                        .WithMany("GeneralDiseases")
+                        .HasForeignKey("ClientId");
                 });
 
             modelBuilder.Entity("ClinicEsteticManagement.Domain.ClinicalData.GynecologicalConditions", b =>
@@ -223,6 +305,13 @@ namespace ClinicEsteticManagement.Persistence.Migrations
                         .HasForeignKey("PregnancyTypeId");
 
                     b.Navigation("PregnancyType");
+                });
+
+            modelBuilder.Entity("ClinicEsteticManagement.Domain.Client", b =>
+                {
+                    b.Navigation("ClinicalInformations");
+
+                    b.Navigation("GeneralDiseases");
                 });
 #pragma warning restore 612, 618
         }

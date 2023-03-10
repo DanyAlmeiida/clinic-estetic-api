@@ -20,7 +20,7 @@ namespace ClinicEsteticManagement.Persistence.Repositories
         public async Task<Client> GetByClientId(Guid id)
         {
             var clients = await _dbContext.Clients.
-                Include(x => x.ClinicalInformation)
+                Include(x => x.ClinicalInformations.OrderByDescending(x => x.CreationDate))
                 .ThenInclude(x => x.GynecologicalConditions)
                 .ThenInclude( x => x.PregnancyType)
                 .FirstAsync(x => x.Id == id);

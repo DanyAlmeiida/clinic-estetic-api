@@ -26,10 +26,7 @@ namespace ClinicEsteticManagement.Application.Features.Clients.Handlers.Commands
         public async Task<UpdateClientDto> Handle(UpdateClientCommand request, CancellationToken cancellationToken)
         {
             Client client = await repository.GetByClientId(request.Id);
-
             mapper.Map(request.clientDto, client);
-            if (request.clientDto.clinicalInformation != null && request.clientDto.clinicalInformation.GynecologicalConditions == null)
-                client.ClinicalInformation.GynecologicalConditions = null;
 
             await repository.Update(client);
 

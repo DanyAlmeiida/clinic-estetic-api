@@ -14,6 +14,7 @@ namespace ClinicEsteticManagement.Domain
         public DateTime BirthDate { get; set; }
         public string JobOccupation { get; set; }
         public string Observations { get; set; }
-        public ClinicalInformation? ClinicalInformation { get; set; }
+        public List<ClinicalInformation> ClinicalInformations { get; set; }
+        public List<GeneralDiseases> GeneralDiseases { get; set; }
     }
 }

@@ -10,6 +10,7 @@ namespace ClinicEsteticManagement.Domain.ClinicalData
 {
     public class ClinicalInformation : BaseDomainEntity
     {
+        public Guid ClientId { get; set; }
         public bool IsLeftHanded { get; set; }
         public string MentalState { get; set; }
         public string ClinicalBackground { get; set; }

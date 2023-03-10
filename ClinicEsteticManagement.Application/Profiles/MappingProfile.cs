@@ -24,18 +24,25 @@ namespace ClinicEsteticManagement.Application.Profiles
             .ForMember(dest => dest.JobOccupation, opt => opt.MapFrom(src => src.JobOccupation))
             .ForMember(dest => dest.Observations , opt => opt.MapFrom(src => src.Observations))
             .ForMember(dest => dest.ModifiedAt , opt => opt.MapFrom(src => src.ModifiedAt))
-            .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => src.CreationDate))
-            .ForMember(dest => dest.clinicalInformation, opt => opt.MapFrom(src => src.ClinicalInformation))
+            .ForMember(dest => dest.CreationDate, opt => opt.MapFrom(src => src.CreationDate))
+            .ForMember(dest => dest.clinicalInformation, opt => opt.MapFrom(src => src.ClinicalInformations))
             .ReverseMap();
 
             CreateMap<Client, CreateClientDto>().ReverseMap();
             CreateMap<UpdateClientDto, Client>().ReverseMap();
+
             CreateMap<ClinicalInformation, ClinicalInformationDto>()
                 .ForMember(dest => dest.Medicines, opt => opt.MapFrom(src => src.Medicines))
             .ForMember(dest => dest.GynecologicalConditions, opt => opt.MapFrom(src => src.GynecologicalConditions))
             .ReverseMap();
 
+            CreateMap<ClinicalInformation, UpdateClinicalInformationDto>()
+                .ForMember(dest => dest.Medicines, opt => opt.MapFrom(src => src.Medicines))
+            .ForMember(dest => dest.GynecologicalConditions, opt => opt.MapFrom(src => src.GynecologicalConditions))
+            .ReverseMap();
+
             CreateMap<GynecologicalConditions, GynecologicalConditionsDto>().ReverseMap();
+            CreateMap<ClinicalInformation, CreateClinicalInformationDto>().ReverseMap();
             #endregion
         }
     }

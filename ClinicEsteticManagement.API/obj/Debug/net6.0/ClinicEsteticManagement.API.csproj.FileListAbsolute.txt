@@ -1,4 +1,3 @@
-C:\Users\Dany-PC\source\repos\ClinicEsteticManagement\ClinicEsteticManagement.API\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\Dany-PC\source\repos\ClinicEsteticManagement\ClinicEsteticManagement.API\bin\Debug\net6.0\appsettings.json
 C:\Users\Dany-PC\source\repos\ClinicEsteticManagement\ClinicEsteticManagement.API\bin\Debug\net6.0\ClinicEsteticManagement.API.exe
 C:\Users\Dany-PC\source\repos\ClinicEsteticManagement\ClinicEsteticManagement.API\bin\Debug\net6.0\ClinicEsteticManagement.API.deps.json

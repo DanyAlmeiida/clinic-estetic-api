@@ -32,6 +32,35 @@
             <param name="postDto"></param>
             <returns></returns>
         </member>
+        <member name="M:ClinicEsteticManagement.API.Controllers.ClinicalInformationController.Post(System.Guid,ClinicEsteticManagement.Application.DTOs.ClinicalData.CreateClinicalInformationDto)">
+            <summary>
+            Creates a new clinical information record
+            </summary>
+            <param name="id"></param>
+            <param name="clinicalInformationDto"></param>
+            <returns>returns Guid</returns>
+        </member>
+        <member name="M:ClinicEsteticManagement.API.Controllers.ClinicalInformationController.Get(System.Guid)">
+            <summary>
+             Gets clinical information based on id 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicEsteticManagement.API.Controllers.ClinicalInformationController.Put(System.Guid,ClinicEsteticManagement.Application.DTOs.ClinicalData.UpdateClinicalInformationDto)">
+            <summary>
+            Update clinical information
+            </summary>
+            <param name="UpdateClinicalInformationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicEsteticManagement.API.Controllers.ClinicalInformationController.Delete(System.Guid)">
+            <summary>
+            Deletes clinicalInformation
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:ClinicEsteticManagement.API.Middleware.ExceptionMiddleware">
             <summary>
             ExceptionMiddleware

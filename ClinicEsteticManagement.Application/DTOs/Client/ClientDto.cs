@@ -17,6 +17,6 @@ namespace ClinicEsteticManagement.Application.DTOs.Client
         public DateTime BirthDate { get; set; }
         public string JobOccupation { get; set; }
         public string Observations { get; set; }
-        public ClinicalInformationDto? clinicalInformation { get; set; }
+        public List<ClinicalInformationDto>? clinicalInformation { get; set; }
     }
 }

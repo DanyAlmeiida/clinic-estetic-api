@@ -20,8 +20,7 @@ namespace ClinicEsteticManagement.Persistence
         //set rules
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Client>()
-               .HasOne(s => s.ClinicalInformation);
+            modelBuilder.Entity<Client>(x => { x.HasMany(s => s.ClinicalInformations); x.HasMany(s => s.GeneralDiseases); });
 
             modelBuilder.Entity<Client>().HasAlternateKey(c => c.ClientId);
 
@@ -31,29 +30,37 @@ namespace ClinicEsteticManagement.Persistence
             modelBuilder.Entity<ClinicalInformation>()
                 .HasOne(s => s.GynecologicalConditions);
 
-           
-
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
         }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            foreach (var entry in ChangeTracker.Entries<BaseDomainEntity>())
+            var AddedEntities = ChangeTracker.Entries().Where(E => E.State == EntityState.Added).ToList();
+            AddedEntities.ForEach(E =>
             {
-                if (entry.State == EntityState.Added)
+                var prop = E.Metadata.FindProperty("CreationDate");
+                if (prop != null)
                 {
-                    entry.Entity.CreationDate = DateTime.Now;
+                    E.Property("CreationDate").CurrentValue = DateTime.Now;
                 }
-                if(entry.State == EntityState.Modified)
+            });
+
+            var EditedEntities = ChangeTracker.Entries().Where(E => E.State == EntityState.Modified).ToList();
+
+            EditedEntities.ForEach(E =>
+            {
+                var prop = E.Metadata.FindProperty("ModifiedAt");
+                if (prop != null)
                 {
-                    entry.Entity.ModifiedAt = DateTime.Now;
+                    E.Property("ModifiedAt").CurrentValue = DateTime.Now;
                 }
-            }
+            });
+          
             return base.SaveChangesAsync(cancellationToken);
         }
         public DbSet<PregnancyType> PregnancyTypes { get; set; }
         public DbSet<GynecologicalConditions> GynecologicalConditions { get; set; }
         public DbSet<ClinicalInformation> ClinicalInformations { get; set; }
         public DbSet<Client> Clients { get; set; }
-        
+        public DbSet<GeneralDiseases> GeneralDiseases { get; set; }
     }
 }
