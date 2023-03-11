@@ -4,11 +4,6 @@ using ClinicEsteticManagement.Application.Exceptions;
 using ClinicEsteticManagement.Application.Features.GeneralDiseases.Requests.Queries;
 using ClinicEsteticManagement.Application.Persistence.Contracts;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicEsteticManagement.Application.Features.GeneralDiseases.Handlers.Queries
 {
@@ -17,7 +12,7 @@ namespace ClinicEsteticManagement.Application.Features.GeneralDiseases.Handlers.
         private readonly IGeneralDiseasesRepository repository;
         private readonly IMapper mapper;
 
-        public GetGeneralDiseasesRequestHandler(IGeneralDiseasesRepository repository,IMapper mapper)
+        public GetGeneralDiseasesRequestHandler(IGeneralDiseasesRepository repository, IMapper mapper)
         {
             this.repository = repository;
             this.mapper = mapper;

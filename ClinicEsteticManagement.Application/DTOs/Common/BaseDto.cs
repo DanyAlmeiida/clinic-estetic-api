@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClinicEsteticManagement.Application.DTOs.Common
+﻿namespace ClinicEsteticManagement.Application.DTOs.Common
 {
     public class BaseDto
     {

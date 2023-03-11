@@ -1,8 +1,4 @@
-﻿using ClinicEsteticManagement.API;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-
-namespace ClinicEsteticManagement.API
+﻿namespace ClinicEsteticManagement.API
 {
     public class Program
     {

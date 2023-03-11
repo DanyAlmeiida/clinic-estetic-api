@@ -19,6 +19,9 @@
 
   <ItemGroup>
     <Folder Include="DTOs\Habits\" />
+    <Folder Include="Features\PregnancyTypes\Handlers\Commands\" />
+    <Folder Include="Features\PregnancyTypes\Handlers\Queries\" />
+    <Folder Include="Features\PregnancyTypes\Requests\Queries\" />
   </ItemGroup>
 
 </Project>

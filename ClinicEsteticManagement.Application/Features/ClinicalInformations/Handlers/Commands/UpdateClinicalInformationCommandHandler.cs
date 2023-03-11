@@ -1,17 +1,9 @@
 ﻿using AutoMapper;
-using ClinicEsteticManagement.Application.DTOs.Client;
 using ClinicEsteticManagement.Application.DTOs.ClinicalData;
-using ClinicEsteticManagement.Application.Exceptions;
 using ClinicEsteticManagement.Application.Features.ClinicalInformations.Requests.Commands;
 using ClinicEsteticManagement.Application.Persistence.Contracts;
-using ClinicEsteticManagement.Domain;
 using ClinicEsteticManagement.Domain.ClinicalData;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicEsteticManagement.Application.Features.ClinicalInformations.Handlers.Commands
 {

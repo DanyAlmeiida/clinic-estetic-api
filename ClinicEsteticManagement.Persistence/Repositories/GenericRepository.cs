@@ -1,5 +1,4 @@
-﻿using ClinicEsteticManagement.Application.Persistence.Contracts;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace ClinicEsteticManagement.Persistence.Repositories
 {

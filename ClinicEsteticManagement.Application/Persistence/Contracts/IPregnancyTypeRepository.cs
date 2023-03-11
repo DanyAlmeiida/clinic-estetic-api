@@ -2,7 +2,7 @@
 
 namespace ClinicEsteticManagement.Application.Persistence.Contracts
 {
-    public interface IGeneralDiseasesRepository : IGenericRepository<GeneralDisease>
+    public interface IPregnancyTypeRepository : IGenericRepository<PregnancyType>
     {
     }
 }

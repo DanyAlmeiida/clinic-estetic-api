@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClinicEsteticManagement.Application.DTOs.GeneralDiseases
+﻿namespace ClinicEsteticManagement.Application.DTOs.GeneralDiseases
 {
     public interface IGeneralDiseases
     {

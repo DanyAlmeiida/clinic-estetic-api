@@ -3,15 +3,10 @@ using ClinicEsteticManagement.Application.DTOs.Client;
 using ClinicEsteticManagement.Application.Features.Clients.Requests.Queries;
 using ClinicEsteticManagement.Application.Persistence.Contracts;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicEsteticManagement.Application.Features.Clients.Handlers.Queries
 {
-    public class GetClientsListRequestHandler : IRequestHandler<GetClientsListRequest,List<ClientDto>>
+    public class GetClientsListRequestHandler : IRequestHandler<GetClientsListRequest, List<ClientDto>>
     {
         private readonly IClientRepository repository;
         private readonly IMapper mapper;

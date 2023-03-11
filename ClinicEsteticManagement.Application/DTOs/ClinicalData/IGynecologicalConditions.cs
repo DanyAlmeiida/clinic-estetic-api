@@ -1,12 +1,4 @@
-﻿using ClinicEsteticManagement.Domain.ClinicalData;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClinicEsteticManagement.Application.DTOs.ClinicalData
+﻿namespace ClinicEsteticManagement.Application.DTOs.ClinicalData
 {
     public interface IGynecologicalConditions
     {

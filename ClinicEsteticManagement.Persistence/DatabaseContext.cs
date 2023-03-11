@@ -1,12 +1,7 @@
 ﻿using ClinicEsteticManagement.Domain;
 using ClinicEsteticManagement.Domain.ClinicalData;
-using ClinicEsteticManagement.Domain.Common;
+using ClinicEsteticManagement.Domain.ParamTables;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicEsteticManagement.Persistence
 {
@@ -54,7 +49,7 @@ namespace ClinicEsteticManagement.Persistence
                     E.Property("ModifiedAt").CurrentValue = DateTime.Now;
                 }
             });
-          
+
             return base.SaveChangesAsync(cancellationToken);
         }
         public DbSet<PregnancyType> PregnancyTypes { get; set; }
@@ -62,5 +57,6 @@ namespace ClinicEsteticManagement.Persistence
         public DbSet<ClinicalInformation> ClinicalInformations { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<GeneralDisease> GeneralDiseases { get; set; }
+        public DbSet<WorkActivityType> WorkActivityTypes { get; set; }
     }
 }

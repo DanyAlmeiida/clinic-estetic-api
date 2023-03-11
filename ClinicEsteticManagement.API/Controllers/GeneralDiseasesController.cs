@@ -36,7 +36,7 @@ namespace ClinicEsteticManagement.API.Controllers
         [HttpPut]
         public async Task<ActionResult<Guid>> Put([FromBody] UpdateGeneralDiseasesDto updateGeneralDiseasesDto)
         {
-            var command = new UpdateGeneralDiseasesCommand() {  UpdateGeneralDiseasesDto = updateGeneralDiseasesDto };
+            var command = new UpdateGeneralDiseasesCommand() { UpdateGeneralDiseasesDto = updateGeneralDiseasesDto };
             var result = await _mediator.Send(command);
             return Ok(result);
         }

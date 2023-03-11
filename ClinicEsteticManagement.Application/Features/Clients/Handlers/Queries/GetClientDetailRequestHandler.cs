@@ -4,7 +4,6 @@ using ClinicEsteticManagement.Application.Exceptions;
 using ClinicEsteticManagement.Application.Features.Clients.Requests.Queries;
 using ClinicEsteticManagement.Application.Persistence.Contracts;
 using MediatR;
-using System.Xml.Linq;
 
 namespace ClinicEsteticManagement.Application.Features.Clients.Handlers.Queries
 {
@@ -22,7 +21,7 @@ namespace ClinicEsteticManagement.Application.Features.Clients.Handlers.Queries
         public async Task<ClientDto> Handle(GetClientDetailRequest request, CancellationToken cancellationToken)
         {
             var client = await repository.GetByClientId(request.Id);
-            if(client == null)
+            if (client == null)
                 throw new NotFoundException(nameof(client), request.Id);
 
             return mapper.Map<ClientDto>(client);

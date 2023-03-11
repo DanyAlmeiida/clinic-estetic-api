@@ -1,14 +1,8 @@
 ﻿using ClinicEsteticManagement.Application.DTOs.Common;
-using ClinicEsteticManagement.Domain.ClinicalData;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicEsteticManagement.Application.DTOs.ClinicalData
 {
-    public class ClinicalInformationDto : BaseDto,IClinicalInformationDto
+    public class ClinicalInformationDto : BaseDto, IClinicalInformationDto
     {
         public bool IsLeftHanded { get; set; }
         public string MentalState { get; set; }

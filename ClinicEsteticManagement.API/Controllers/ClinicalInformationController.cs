@@ -1,7 +1,4 @@
-﻿using ClinicEsteticManagement.Application.DTOs.Client;
-using ClinicEsteticManagement.Application.DTOs.ClinicalData;
-using ClinicEsteticManagement.Application.Features.Clients.Requests.Commands;
-using ClinicEsteticManagement.Application.Features.Clients.Requests.Queries;
+﻿using ClinicEsteticManagement.Application.DTOs.ClinicalData;
 using ClinicEsteticManagement.Application.Features.ClinicalInformations.Requests.Commands;
 using ClinicEsteticManagement.Application.Features.ClinicalInformations.Requests.Queries;
 using MediatR;
@@ -32,7 +29,7 @@ namespace ClinicEsteticManagement.API.Controllers
         [HttpPost("{id:guid}")]
         public async Task<ActionResult<Guid>> Post([FromRoute] Guid id, [FromBody] CreateClinicalInformationDto clinicalInformationDto)
         {
-            var command = new CreateClinicalInformationCommand { Id=id, ClinicalInformationDto = clinicalInformationDto };
+            var command = new CreateClinicalInformationCommand { Id = id, ClinicalInformationDto = clinicalInformationDto };
             var repsonse = await _mediator.Send(command);
             return Ok(repsonse);
         }
@@ -56,7 +53,7 @@ namespace ClinicEsteticManagement.API.Controllers
         [HttpPut("{id:guid}")]
         public async Task<ActionResult<Guid>> Put([FromRoute] Guid id, [FromBody] UpdateClinicalInformationDto UpdateClinicalInformationDto)
         {
-            var command = new UpdateClinicalInformationCommand() { ClientId= id, UpdateClinicalInformationDto = UpdateClinicalInformationDto };
+            var command = new UpdateClinicalInformationCommand() { ClientId = id, UpdateClinicalInformationDto = UpdateClinicalInformationDto };
             var result = await _mediator.Send(command);
             return Ok(result);
         }

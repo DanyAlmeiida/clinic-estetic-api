@@ -1,12 +1,6 @@
 ﻿using ClinicEsteticManagement.Application.Persistence.Contracts;
 using ClinicEsteticManagement.Domain;
-using ClinicEsteticManagement.Domain.ClinicalData;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicEsteticManagement.Persistence.Repositories
 {
@@ -22,8 +16,8 @@ namespace ClinicEsteticManagement.Persistence.Repositories
             var clients = await _dbContext.Clients.
                 Include(x => x.ClinicalInformations.OrderByDescending(x => x.CreationDate))
                 .ThenInclude(x => x.GynecologicalConditions)
-                .ThenInclude( x => x.PregnancyType)
-                .Include( x => x.GeneralDiseases.OrderByDescending(x => x.CreationDate))
+                .ThenInclude(x => x.PregnancyType)
+                .Include(x => x.GeneralDiseases.OrderByDescending(x => x.CreationDate))
                 .FirstAsync(x => x.Id == id);
 
             return clients;

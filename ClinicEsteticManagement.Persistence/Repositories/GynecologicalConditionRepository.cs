@@ -1,10 +1,5 @@
 ﻿using ClinicEsteticManagement.Application.Persistence.Contracts;
 using ClinicEsteticManagement.Domain.ClinicalData;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicEsteticManagement.Persistence.Repositories
 {

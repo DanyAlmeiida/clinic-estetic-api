@@ -3,7 +3,6 @@ using ClinicEsteticManagement.Application.Features.Clients.Requests.Commands;
 using ClinicEsteticManagement.Application.Features.Clients.Requests.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
 
 namespace ClinicEsteticManagement.API.Controllers
 {
@@ -63,7 +62,7 @@ namespace ClinicEsteticManagement.API.Controllers
         [HttpPut("{id:guid}")]
         public async Task<ActionResult<UpdateClientDto>> Put([FromRoute] Guid id, [FromBody] UpdateClientDto clientDto)
         {
-            var command = new UpdateClientCommand() { Id = id, clientDto = clientDto};
+            var command = new UpdateClientCommand() { Id = id, clientDto = clientDto };
             var post = await _mediator.Send(command);
             return Ok(post);
         }

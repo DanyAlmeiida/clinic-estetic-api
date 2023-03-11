@@ -20,6 +20,8 @@ namespace ClinicEsteticManagement.Persistence
             services.AddScoped<IClinicalInformationRepository, ClinicalInformationRepository>();
             services.AddScoped<IGynecologicalConditionRepository, GynecologicalConditionRepository>();
             services.AddScoped<IGeneralDiseasesRepository, GeneralDiseasesRepository>();
+            services.AddScoped<IPregnancyTypeRepository, PregnancyTypeRepository>();
+            services.AddScoped<IWorkActivityTypeRepository, WorkActivityTypeRepository>();
             return services;
         }
     }
