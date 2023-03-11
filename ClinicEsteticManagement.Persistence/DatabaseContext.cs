@@ -61,6 +61,6 @@ namespace ClinicEsteticManagement.Persistence
         public DbSet<GynecologicalConditions> GynecologicalConditions { get; set; }
         public DbSet<ClinicalInformation> ClinicalInformations { get; set; }
         public DbSet<Client> Clients { get; set; }
-        public DbSet<GeneralDiseases> GeneralDiseases { get; set; }
+        public DbSet<GeneralDisease> GeneralDiseases { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ClinicEsteticManagement.Application.DTOs.Client;
 using ClinicEsteticManagement.Application.DTOs.ClinicalData;
+using ClinicEsteticManagement.Application.DTOs.GeneralDiseases;
 using ClinicEsteticManagement.Domain;
 using ClinicEsteticManagement.Domain.ClinicalData;
 using System;
@@ -26,6 +27,7 @@ namespace ClinicEsteticManagement.Application.Profiles
             .ForMember(dest => dest.ModifiedAt , opt => opt.MapFrom(src => src.ModifiedAt))
             .ForMember(dest => dest.CreationDate, opt => opt.MapFrom(src => src.CreationDate))
             .ForMember(dest => dest.clinicalInformation, opt => opt.MapFrom(src => src.ClinicalInformations))
+            .ForMember(dest => dest.generalDiseases, opt => opt.MapFrom(src => src.GeneralDiseases))
             .ReverseMap();
 
             CreateMap<Client, CreateClientDto>().ReverseMap();
@@ -43,6 +45,9 @@ namespace ClinicEsteticManagement.Application.Profiles
 
             CreateMap<GynecologicalConditions, GynecologicalConditionsDto>().ReverseMap();
             CreateMap<ClinicalInformation, CreateClinicalInformationDto>().ReverseMap();
+            CreateMap<GeneralDisease, GeneralDiseasesDto>().ReverseMap();
+            CreateMap<GeneralDisease, CreateGeneralDiseasesDto>().ReverseMap();
+            CreateMap<GeneralDisease, UpdateGeneralDiseasesDto>().ReverseMap();
             #endregion
         }
     }

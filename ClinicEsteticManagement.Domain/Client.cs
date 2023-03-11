@@ -15,6 +15,6 @@ namespace ClinicEsteticManagement.Domain
         public string JobOccupation { get; set; }
         public string Observations { get; set; }
         public List<ClinicalInformation> ClinicalInformations { get; set; }
-        public List<GeneralDiseases> GeneralDiseases { get; set; }
+        public List<GeneralDisease> GeneralDiseases { get; set; }
     }
 }

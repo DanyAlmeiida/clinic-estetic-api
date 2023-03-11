@@ -140,7 +140,7 @@ namespace ClinicEsteticManagement.Persistence.Migrations
                     b.ToTable("ClinicalInformations");
                 });
 
-            modelBuilder.Entity("ClinicEsteticManagement.Domain.ClinicalData.GeneralDiseases", b =>
+            modelBuilder.Entity("ClinicEsteticManagement.Domain.ClinicalData.GeneralDisease", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -156,7 +156,7 @@ namespace ClinicEsteticManagement.Persistence.Migrations
                     b.Property<double>("CholesterolValue")
                         .HasColumnType("float");
 
-                    b.Property<Guid?>("ClientId")
+                    b.Property<Guid>("ClientId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreationDate")
@@ -224,7 +224,7 @@ namespace ClinicEsteticManagement.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("BreastFeedDate")
+                    b.Property<DateTime?>("BreastFeedDate")
                         .HasColumnType("Date");
 
                     b.Property<int>("ChildrenQuantity")
@@ -233,10 +233,10 @@ namespace ClinicEsteticManagement.Persistence.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("MenopauseDate")
+                    b.Property<DateTime?>("MenopauseDate")
                         .HasColumnType("Date");
 
-                    b.Property<DateTime>("MenstruatingDate")
+                    b.Property<DateTime?>("MenstruatingDate")
                         .HasColumnType("Date");
 
                     b.Property<DateTime?>("ModifiedAt")
@@ -245,7 +245,7 @@ namespace ClinicEsteticManagement.Persistence.Migrations
                     b.Property<Guid?>("PregnancyTypeId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("PregnantDate")
+                    b.Property<DateTime?>("PregnantDate")
                         .HasColumnType("Date");
 
                     b.HasKey("Id");
@@ -291,11 +291,13 @@ namespace ClinicEsteticManagement.Persistence.Migrations
                     b.Navigation("GynecologicalConditions");
                 });
 
-            modelBuilder.Entity("ClinicEsteticManagement.Domain.ClinicalData.GeneralDiseases", b =>
+            modelBuilder.Entity("ClinicEsteticManagement.Domain.ClinicalData.GeneralDisease", b =>
                 {
                     b.HasOne("ClinicEsteticManagement.Domain.Client", null)
                         .WithMany("GeneralDiseases")
-                        .HasForeignKey("ClientId");
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ClinicEsteticManagement.Domain.ClinicalData.GynecologicalConditions", b =>
