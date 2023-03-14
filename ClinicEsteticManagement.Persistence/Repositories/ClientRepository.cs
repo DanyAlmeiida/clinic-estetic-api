@@ -18,6 +18,7 @@ namespace ClinicEsteticManagement.Persistence.Repositories
                 .ThenInclude(x => x.GynecologicalConditions)
                 .ThenInclude(x => x.PregnancyType)
                 .Include(x => x.GeneralDiseases.OrderByDescending(x => x.CreationDate))
+                .Include(x => x.EverydayHabits.OrderByDescending(x => x.CreationDate))
                 .FirstAsync(x => x.Id == id);
 
             return clients;

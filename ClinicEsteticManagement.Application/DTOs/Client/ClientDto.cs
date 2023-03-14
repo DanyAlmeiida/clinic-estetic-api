@@ -1,6 +1,7 @@
 ﻿using ClinicEsteticManagement.Application.DTOs.ClinicalData;
 using ClinicEsteticManagement.Application.DTOs.Common;
 using ClinicEsteticManagement.Application.DTOs.GeneralDiseases;
+using ClinicEsteticManagement.Application.DTOs.Habits;
 using System.ComponentModel.DataAnnotations;
 
 namespace ClinicEsteticManagement.Application.DTOs.Client
@@ -15,5 +16,6 @@ namespace ClinicEsteticManagement.Application.DTOs.Client
         public string Observations { get; set; }
         public List<ClinicalInformationDto>? clinicalInformation { get; set; }
         public List<GeneralDiseasesDto>? generalDiseases { get; set; }
+        public List<EverydayHabitDto>? everydayHabits { get; set; }
     }
 }

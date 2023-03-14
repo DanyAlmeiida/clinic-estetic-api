@@ -25,6 +25,7 @@ namespace ClinicEsteticManagement.Persistence
             modelBuilder.Entity<ClinicalInformation>()
                 .HasOne(s => s.GynecologicalConditions);
 
+
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
         }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
@@ -58,5 +59,6 @@ namespace ClinicEsteticManagement.Persistence
         public DbSet<Client> Clients { get; set; }
         public DbSet<GeneralDisease> GeneralDiseases { get; set; }
         public DbSet<WorkActivityType> WorkActivityTypes { get; set; }
+        public DbSet<EverydayHabit> EverydayHabits { get; set; }
     }
 }

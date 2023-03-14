@@ -2,8 +2,12 @@
 using ClinicEsteticManagement.Application.DTOs.Client;
 using ClinicEsteticManagement.Application.DTOs.ClinicalData;
 using ClinicEsteticManagement.Application.DTOs.GeneralDiseases;
+using ClinicEsteticManagement.Application.DTOs.Habits;
+using ClinicEsteticManagement.Application.DTOs.PregnancyTypes;
+using ClinicEsteticManagement.Application.DTOs.WorkActivityTypes;
 using ClinicEsteticManagement.Domain;
 using ClinicEsteticManagement.Domain.ClinicalData;
+using ClinicEsteticManagement.Domain.ParamTables;
 
 namespace ClinicEsteticManagement.Application.Profiles
 {
@@ -23,6 +27,7 @@ namespace ClinicEsteticManagement.Application.Profiles
             .ForMember(dest => dest.CreationDate, opt => opt.MapFrom(src => src.CreationDate))
             .ForMember(dest => dest.clinicalInformation, opt => opt.MapFrom(src => src.ClinicalInformations))
             .ForMember(dest => dest.generalDiseases, opt => opt.MapFrom(src => src.GeneralDiseases))
+            .ForMember(dest => dest.everydayHabits, opt => opt.MapFrom(src => src.EverydayHabits))
             .ReverseMap();
 
             CreateMap<Client, CreateClientDto>().ReverseMap();
@@ -43,6 +48,15 @@ namespace ClinicEsteticManagement.Application.Profiles
             CreateMap<GeneralDisease, GeneralDiseasesDto>().ReverseMap();
             CreateMap<GeneralDisease, CreateGeneralDiseasesDto>().ReverseMap();
             CreateMap<GeneralDisease, UpdateGeneralDiseasesDto>().ReverseMap();
+
+            CreateMap<PregnancyType,PregnancyTypeDto>().ReverseMap();
+            CreateMap<PregnancyType, CreatePregnancyTypeDto>().ReverseMap();
+
+            CreateMap<WorkActivityType, WorkActivityTypeDto>().ReverseMap();
+            CreateMap<WorkActivityType, CreateWorkActivityTypeDto>().ReverseMap();
+
+            CreateMap<EverydayHabit, EverydayHabitDto>().ReverseMap();
+            CreateMap<EverydayHabit, CreateEverydayHabitDto>().ReverseMap();
             #endregion
         }
     }

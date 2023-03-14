@@ -7,6 +7,7 @@ namespace ClinicEsteticManagement.Domain.ClinicalData
     {
         [Column(TypeName = "Date")]
         public DateTime? PregnantDate { get; set; }
+        public Guid? PregnancyTypeId { get; set; }
         public PregnancyType? PregnancyType { get; set; }
         [Column(TypeName = "Date")]
         public DateTime? BreastFeedDate { get; set; }

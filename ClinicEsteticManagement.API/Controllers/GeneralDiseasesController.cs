@@ -1,4 +1,7 @@
 ﻿using ClinicEsteticManagement.Application.DTOs.GeneralDiseases;
+using ClinicEsteticManagement.Application.DTOs.Habits;
+using ClinicEsteticManagement.Application.Features.EverydayHabits.Requests.Commands;
+using ClinicEsteticManagement.Application.Features.EverydayHabits.Requests.Requests;
 using ClinicEsteticManagement.Application.Features.GeneralDiseases.Requests.Commands;
 using ClinicEsteticManagement.Application.Features.GeneralDiseases.Requests.Queries;
 using MediatR;
@@ -6,44 +9,44 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ClinicEsteticManagement.API.Controllers
 {
-    [Route("api/diseases")]
+    [Route("api/everydayhabits")]
     [ApiController]
-    public class GeneralDiseasesController : ControllerBase
+    public class EverydayHabitsController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly ILogger<ClientsController> _logger;
+        private readonly ILogger<EverydayHabitsController> _logger;
 
-        public GeneralDiseasesController(ILogger<ClientsController> logger, IMediator mediator)
+        public EverydayHabitsController(ILogger<EverydayHabitsController> logger, IMediator mediator)
         {
             _logger = logger;
             _mediator = mediator;
         }
 
         [HttpPost("{id:guid}")]
-        public async Task<ActionResult<Guid>> Post([FromRoute] Guid id, [FromBody] CreateGeneralDiseasesDto createGeneralDiseasesDto)
+        public async Task<ActionResult<Guid>> Post([FromRoute] Guid id, [FromBody] CreateEverydayHabitDto dto)
         {
-            var command = new CreateGeneralDiseasesCommand { ClientId = id, GeneralDiseasesDto = createGeneralDiseasesDto };
+            var command = new CreateEverydayHabitCommand { ClientId = id, dto = dto };
             var repsonse = await _mediator.Send(command);
             return Ok(repsonse);
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<ActionResult<GeneralDiseasesDto>> Get([FromRoute] Guid id)
+        public async Task<ActionResult<EverydayHabitDto>> Get([FromRoute] Guid id)
         {
-            var repsonse = await _mediator.Send(new GetGeneralDiseasesRequest() { Id = id });
+            var repsonse = await _mediator.Send(new GetEverydayHabitsRequest() { Id = id });
             return Ok(repsonse);
         }
         [HttpPut]
-        public async Task<ActionResult<Guid>> Put([FromBody] UpdateGeneralDiseasesDto updateGeneralDiseasesDto)
+        public async Task<ActionResult<Guid>> Put([FromBody] EverydayHabitDto dto)
         {
-            var command = new UpdateGeneralDiseasesCommand() { UpdateGeneralDiseasesDto = updateGeneralDiseasesDto };
+            var command = new UpdateEverydayHabitCommand() { dto = dto };
             var result = await _mediator.Send(command);
             return Ok(result);
         }
         [HttpDelete("{id:guid}")]
         public async Task<ActionResult<Unit>> Delete([FromRoute] Guid id)
         {
-            var command = new DeleteGeneralDiseasesCommand() { Id = id };
+            var command = new DeleteEverydayHabitCommand() { Id = id };
             var result = await _mediator.Send(command);
             return Ok(result);
         }

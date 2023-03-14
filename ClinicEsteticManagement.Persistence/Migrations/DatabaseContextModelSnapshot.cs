@@ -140,6 +140,69 @@ namespace ClinicEsteticManagement.Persistence.Migrations
                     b.ToTable("ClinicalInformations");
                 });
 
+            modelBuilder.Entity("ClinicEsteticManagement.Domain.ClinicalData.EverydayHabit", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ClientId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("DoesPhysicalActivity")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Drinks")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Feeding")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HairRemovalMethod")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("PainSensitive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PhysicalActivity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SleepQuality")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Smoke")
+                        .HasColumnType("bit");
+
+                    b.Property<TimeSpan?>("TimeADayOfPhysicalActivty")
+                        .HasColumnType("time");
+
+                    b.Property<TimeSpan?>("TimeADayWithoutPhysicalActivty")
+                        .HasColumnType("time");
+
+                    b.Property<float?>("WaterIntakePerDay")
+                        .HasColumnType("real");
+
+                    b.Property<string>("WorkFunction")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.ToTable("EverydayHabits");
+                });
+
             modelBuilder.Entity("ClinicEsteticManagement.Domain.ClinicalData.GeneralDisease", b =>
                 {
                     b.Property<Guid>("Id")
@@ -276,6 +339,42 @@ namespace ClinicEsteticManagement.Persistence.Migrations
                     b.ToTable("PregnancyTypes");
                 });
 
+            modelBuilder.Entity("ClinicEsteticManagement.Domain.ParamTables.WorkActivityType", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WorkActivityTypes");
+                });
+
+            modelBuilder.Entity("EverydayHabitWorkActivityType", b =>
+                {
+                    b.Property<Guid>("EverydayhabitsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("WorkActivitysId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("EverydayhabitsId", "WorkActivitysId");
+
+                    b.HasIndex("WorkActivitysId");
+
+                    b.ToTable("EverydayHabitWorkActivityType");
+                });
+
             modelBuilder.Entity("ClinicEsteticManagement.Domain.ClinicalData.ClinicalInformation", b =>
                 {
                     b.HasOne("ClinicEsteticManagement.Domain.Client", null)
@@ -289,6 +388,15 @@ namespace ClinicEsteticManagement.Persistence.Migrations
                         .HasForeignKey("GynecologicalConditionsId");
 
                     b.Navigation("GynecologicalConditions");
+                });
+
+            modelBuilder.Entity("ClinicEsteticManagement.Domain.ClinicalData.EverydayHabit", b =>
+                {
+                    b.HasOne("ClinicEsteticManagement.Domain.Client", null)
+                        .WithMany("EverydayHabits")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ClinicEsteticManagement.Domain.ClinicalData.GeneralDisease", b =>
@@ -309,9 +417,26 @@ namespace ClinicEsteticManagement.Persistence.Migrations
                     b.Navigation("PregnancyType");
                 });
 
+            modelBuilder.Entity("EverydayHabitWorkActivityType", b =>
+                {
+                    b.HasOne("ClinicEsteticManagement.Domain.ClinicalData.EverydayHabit", null)
+                        .WithMany()
+                        .HasForeignKey("EverydayhabitsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ClinicEsteticManagement.Domain.ParamTables.WorkActivityType", null)
+                        .WithMany()
+                        .HasForeignKey("WorkActivitysId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ClinicEsteticManagement.Domain.Client", b =>
                 {
                     b.Navigation("ClinicalInformations");
+
+                    b.Navigation("EverydayHabits");
 
                     b.Navigation("GeneralDiseases");
                 });
